@@ -2,22 +2,24 @@ use_bpm 160
 
 live_loop :main do
   with_synth :blade do
-    play :c4
-    sleep 0.5
-    play :e4
-    sleep 0.5
-    play :g4
-    sleep 0.5
-    play :b4
-    sleep 0.5
-    play :c5
-    sleep 0.5
-    play :b4
-    sleep 0.5
-    play :g4
-    sleep 0.5
-    play :e4
-    sleep 0.5
+    with_fx :bitcrusher do
+      play :c4
+      sleep 0.5
+      play :e4
+      sleep 0.5
+      play :g4
+      sleep 0.5
+      play :b4
+      sleep 0.5
+      play :c5
+      sleep 0.5
+      play :b4
+      sleep 0.5
+      play :g4
+      sleep 0.5
+      play :e4
+      sleep 0.5
+    end
   end
 end
 
