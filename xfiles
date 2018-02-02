@@ -1,0 +1,28 @@
+#X FILES THEME
+#SHEET MUSIC FROM https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
+#bpm used is 150, as stated below
+
+use_bpm 150
+
+live_loop :spooky do
+  with_synth :piano do
+    with_fx :bitcrusher do
+      1.times do
+        play :a4, sustain: 1
+        sleep 0.3333333333333
+        play :c5, sustain: 1
+        sleep 0.3333333333333
+        play :e5, sustain: 1
+        sleep 0.3333333333333
+      end
+      3.times do
+        play :f5, sustain: 1
+        sleep 0.3333333333333
+        play :a4, sustain: 1
+        sleep 0.3333333333333
+        play :e5, sustain: 1
+        sleep 0.3333333333333
+      end
+    end
+  end
+end
