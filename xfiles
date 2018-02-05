@@ -38,15 +38,15 @@ live_loop :spooky do
           sleep 0.3333333333333
           play :c5, sustain: 1, amp: 0.5
           sleep 0.3333333333333
-          play :e5, sustain: 1, amp: 0.3
+          play :e5, sustain: 1, amp: 0.5
           sleep 0.3333333333333
         end
         3.times do
-          play :f5, sustain: 1, amp: 0.3
+          play :f5, sustain: 1, amp: 0.5
           sleep 0.3333333333333
-          play :a4, sustain: 1, amp: 0.3
+          play :a4, sustain: 1, amp: 0.5
           sleep 0.3333333333333
-          play :e5, sustain: 1, amp: 0.3
+          play :e5, sustain: 1, amp: 0.5
           sleep 0.3333333333333
         end
       end
