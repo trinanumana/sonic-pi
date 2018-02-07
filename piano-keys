@@ -1,9 +1,7 @@
 x=21
-
+use_synth :piano
 87.times do
-  with_synth :piano do
-    play x
-    x=(x+1)
-    sleep 0.25
-  end
+  play x
+  x=(x+1)
+  sleep 0.25
 end
