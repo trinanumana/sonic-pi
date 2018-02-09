@@ -3,73 +3,74 @@
 #bpm used is 150, as stated below
 
 use_bpm 150
+use_synth :piano
 
 x=1
 b=0.5
+y=0
 
 2.times do
-  with_synth :piano do
-    with_fx :bitcrusher do
+  with_fx :bitcrusher do
+    1.times do
       1.times do
-        1.times do
-          play :a4, sustain: x, amp: b
-          sleep 0.3333333333333
-          play :c5, sustain: x, amp: b
-          sleep 0.3333333333333
-          play :e5, sustain: x, amp: b
-          sleep 0.3333333333333
-        end
-        3.times do
-          play :f5, sustain: x, amp: b
-          sleep 0.3333333333333
-          play :a4, sustain: x, amp: b
-          sleep 0.3333333333333
-          play :e5, sustain: x, amp: b
-          sleep 0.3333333333333
-        end
-        b = b + 1
+        play :a4, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :c5, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :e5, sustain: x, amp: b
+        sleep 0.3333333333333
       end
+      3.times do
+        play :f5, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :a4, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :e5, sustain: x, amp: b
+        sleep 0.3333333333333
+      end
+      b = b + 1
     end
   end
 end
 
-live_loop :spooky do
-  with_synth :piano do
-    with_fx :bitcrusher do
-      1.times do
-        1.times do
-          play :a4, sustain: x
-          sleep 0.3333333333333
-          play :c5, sustain: x
-          sleep 0.3333333333333
-          play :e5, sustain: x
-          sleep 0.3333333333333
-        end
-        3.times do
-          play :f5, sustain: x
-          sleep 0.3333333333333
-          play :a4, sustain: x
-          sleep 0.3333333333333
-          play :e5, sustain: x
-          sleep 0.3333333333333
-        end
-      end
-      play :a, sustain: x + 2
-      sleep 1
-      play :a3, sustain: x
-      sleep 1
-      play :e5, sustain: x
-      sleep 1
-      play :d5, sustain: x
-      sleep 1
-      play :e5, sustain: x
-      sleep 1
-      play :g, sustain: x
-      sleep 1
-      play :e5, slide: x + 3
-      sleep 0.5
-      play :a4, sustain: x
-      sleep 1
+live_loop :main do
+  with_fx :bitcrusher do
+    1.times do
+      play :a4, sustain: x - 0.8
+      sleep 0.3333333333333
+      play :c5, sustain: x - 0.8
+      sleep 0.3333333333333
+      play :e5, sustain: x - 0.8
+      sleep 0.3333333333333
     end
+    3.times do
+      play :f5, sustain: x - 0.8
+      sleep 0.3333333333333
+      play :a4, sustain: x - 0.8
+      sleep 0.3333333333333
+      play :e5, sustain: x - 0.8
+      sleep 0.3333333333333
+    end
+  end
+end
+
+live_loop :back do
+  with_fx :bitcrusher do
+    play :a, sustain: x + 2
+    sleep 1
+    play :a3, sustain: x
+    sleep 1
+    play :e5, sustain: x
+    sleep 1
+    play :d5, sustain: x
+    sleep 1
+    play :e5, sustain: x
+    sleep 1
+    play :g, sustain: x
+    sleep 1
+    play :e5, slide: x + 3
+    sleep 1.5
+    play :a4, sustain: x
+    sleep 0.5
   end
 end
