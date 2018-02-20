@@ -12,7 +12,7 @@ notes = [:a, :a3, :e5, :d5, :e5, :g, :e5, :a4]
 sustains = [3, 1, 1, 1, 1, 1, 4, 1]
 sleeps = [1, 1, 1, 1, 1, 1, 1.5, 0.5]
 index=0
-=begin
+
 #this means that the code inside will be played three times
 3.times do
   with_fx :bitcrusher do
@@ -56,7 +56,7 @@ live_loop :main do
     play :e5, sustain: x - 0.8
     sleep 0.3333333333333
   end
-=end
+end
 #these are the extra sounds you hear in the theme song
 live_loop :back do
   with_fx :bitcrusher do
