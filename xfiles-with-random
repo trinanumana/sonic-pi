@@ -1,0 +1,79 @@
+#X FILES THEME by Mark Snow
+#SHEET MUSIC FROM https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
+#bpm used is 150, as stated below
+
+use_bpm 150
+use_synth :piano
+#these variables are used so that we can change values quickly.
+x=1
+b=0.5
+y=0
+notes = [:a, :a3, :e5, :d5, :e5, :g, :e5, :a4]
+sustains = [3, 1, 1, 1, 1, 1, 4, 1]
+sleeps = [1, 1, 1, 1, 1, 1, 1.5, 0.5]
+index=0
+
+#this means that the code inside will be played three times
+3.times do
+  with_fx :bitcrusher do
+    1.times do
+      1.times do
+        play :a4, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :c5, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :e5, sustain: x, amp: b
+        sleep 0.3333333333333
+      end
+      3.times do
+        play :f5, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :a4, sustain: x, amp: b
+        sleep 0.3333333333333
+        play :e5, sustain: x, amp: b
+        sleep 0.3333333333333
+      end
+      b = b + 1
+    end
+  end
+end
+
+#a live_loop plays continously, this is the main, iconic part of the theme song.
+live_loop :main do
+  1.times do
+    #like stated earlier, the value of x will be decreased by 0.8
+    play :a4, sustain: x - 0.8
+    sleep 0.3333333333333
+    play :c5, sustain: x - 0.8
+    sleep 0.3333333333333
+    play :e5, sustain: x - 0.8
+    sleep 0.3333333333333
+  end
+  3.times do
+    play :f5, sustain: x - 0.8
+    sleep 0.3333333333333
+    play :a4, sustain: x - 0.8
+    sleep 0.3333333333333
+    play :e5, sustain: x - 0.8
+    sleep 0.3333333333333
+  end
+end
+#these are the extra sounds you hear in the theme song
+live_loop :back do
+  with_fx :bitcrusher do
+    8.times do
+      play notes[index], sustain: sustains[index]
+      sleep sleeps[index]
+      index = index + 1
+    end
+    index = 0
+  end
+end
+
+live_loop :random do
+  with_fx :echo do
+    a = rrand_i(0,8)
+    play a, amp: b
+    sleep sleeps[index]
+  end
+end
