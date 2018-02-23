@@ -72,6 +72,7 @@ end
 
 live_loop :random do
   with_fx :echo do
+    #this piece of code is saying to play a random note from the index, which is 0 through 8
     a = rrand_i(0,8)
     play a, amp: b
     sleep sleeps[index]
