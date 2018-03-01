@@ -8,49 +8,45 @@ use_synth :piano
 x=1
 b=0.5
 y=0.3333333333333
+fnotes = [:a4, :c5, :e5]
+snotes = [:f5, :a4, :e5, :f5, :a4, :e5, :f5, :a4, :e5]
 notes = [:a, :a3, :e5, :d5, :e5, :g, :e5, :a4]
 sustains = [3, 1, 1, 1, 1, 1, 4, 1]
 sleeps = [1, 1, 1, 1, 1, 1, 1.5, 0.5]
+pans = [1, -1, 1, -1, 1, -1, 1, -1]
+index1 = 0
+index2 = 0
 index=0
 spooky = "C:/Users/trina_umana/Documents/Audacity/spooky.wav"
 
 define :beginning do
-  1.times do
-    play :a4, sustain: x, amp: b
-    sleep y
-    play :c5, sustain: x, amp: b
-    sleep y
-    play :e5, sustain: x, amp: b
-    sleep y
-  end
   3.times do
-    play :f5, sustain: x, amp: b
+    play fnotes[index1], sustain: x, amp: b
     sleep y
-    play :a4, sustain: x, amp: b
-    sleep y
-    play :e5, sustain: x, amp: b
-    sleep y
+    index1 = index1 + 1
   end
+  index1 = 0
+  9.times do
+    play snotes[index2], sustain: x, amp: b
+    sleep y
+    index2 = index2 + 1
+  end
+  index2 = 0
 end
 
 define :main do
-  1.times do
-    #like stated earlier, the value of x will be decreased by 0.8
-    play :a4, sustain: x - 0.8
-    sleep y
-    play :c5, sustain: x - 0.8
-    sleep y
-    play :e5, sustain: x - 0.8
-    sleep y
-  end
   3.times do
-    play :f5, sustain: x - 0.8
+    play fnotes[index1],sustain: x - 0.8
     sleep y
-    play :a4, sustain: x - 0.8
-    sleep y
-    play :e5, sustain: x - 0.8
-    sleep y
+    index1 = index1 + 1
   end
+  index1 = 0
+  9.times do
+    play snotes[index2],sustain: x - 0.8
+    sleep y
+    index2 = index2 + 1
+  end
+  index2 = 0
 end
 
 1.times do
@@ -91,7 +87,7 @@ live_loop :random do
   with_fx :flanger do
     #this piece of code is saying to play a random note, which is 0 through 8
     a = rrand_i(0, 8)
-    play a, amp: b - 0.3
+    play a, amp: b - 0.3, pan: pans[index]
     sleep sleeps[index]
   end
 end
