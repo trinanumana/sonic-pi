@@ -34,6 +34,7 @@ define :beginning do
   index2 = 0
 end
 
+#this is a parameter, it will use the variables given to certain notes you'll assign to the parameter underneath
 define :main do|a,b,c,d,e,f,g,h,i,j,k,l|
   live_loop :first do
     1.times do
@@ -66,6 +67,7 @@ define :main do|a,b,c,d,e,f,g,h,i,j,k,l|
     end
   end
 end
+#these are the notes, reading a-l as a4-e5
 main :a4,:c5,:e5,:f5,:a4,:e5,:f5,:a4,:e5,:f5,:a4,:e5
 
 1.times do
@@ -87,6 +89,7 @@ end
 #a live_loop plays continously, this is the main, iconic part of the theme song.
 live_loop :spook do
   with_fx :bitcrusher do
+  #the parameter is being called here
     play main
   end
 end
