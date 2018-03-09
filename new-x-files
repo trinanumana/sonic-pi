@@ -86,7 +86,9 @@ end
 
 #a live_loop plays continously, this is the main, iconic part of the theme song.
 live_loop :spook do
-  play main
+  with_fx :bitcrusher do
+    play main
+  end
 end
 
 #these are the extra sounds you hear in the theme song
