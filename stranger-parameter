@@ -1,0 +1,43 @@
+use_bpm 160
+use_synth :blade
+st_notes = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2] #this is a list, aka an array, of the notes we will be using for the song
+index = 0
+
+define :melody do|a,b,c,d,e,f,g,h|
+  live_loop :mel do
+    play a, amp: 0.2
+    sleep 0.5
+    play b, amp: 0.2
+    sleep 0.5
+    play c, amp: 0.2
+    sleep 0.5
+    play d, amp: 0.2
+    sleep 0.5
+    play e, amp: 0.2
+    sleep 0.5
+    play f, amp: 0.2
+    sleep 0.5
+    play g, amp: 0.2
+    sleep 0.5
+    play h, amp: 0.2
+    sleep 0.5
+  end
+end
+melody :d,:e,:g,:b,:c,:b,:g,:e
+
+live_loop :para do
+  use_bpm 80
+  with_synth :saw do
+    play melody
+  end
+end
+
+live_loop :main do
+  8.times do
+    play st_notes[index]
+    sleep 0.5
+    index = index + 1
+  end
+  #once the notes are played 8 times, we have to set the index variable back to 0 therefore allowing the notes to continuously play within the live loop
+  index = 0
+end
