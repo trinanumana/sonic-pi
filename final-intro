@@ -7,7 +7,7 @@ c = 1
 intro = "C:/Users/trina_umana/Desktop/marina/intrro.wav"
 
 live_loop :introduc do
-  10.times do
+  20.times do
     sample intro, amp: b, rate: c #this is setting the amp and the rate of the sample to the variable given
     sleep 7.5
     #this is making the variable value increase with every loop by 0.2
