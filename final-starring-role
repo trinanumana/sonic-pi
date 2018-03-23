@@ -1,0 +1,96 @@
+#STARRING ROLE by MARINA & THE DIAMONDS
+#from https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0157061
+use_bpm 72
+#this is an array, a list of notes and/or sleeps we've assigned to a variable
+fnotes = [:e5, :c, :c5, :e5, :c5, :e5, :a, :c5, :e5, :c5, :e5, :f, :c5, :e5, :g, :c5, :d5, :b4]
+fsleeps = [0, 0.5, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 0.5, 0.5]
+snotes = [:c, :e4, :g4, :c, :e4, :g4, :e4, :g4, :e4, :g4, :g, :e4, :g4, :g, :e4, :g4, :e4, :g4, :e4, :g4]
+ssleeps = [0, 0.333333333, 0.333333333, 0, 0.333333333, 0.333333333, 0.333333333, 0.333333333, 0.333333333, 0.333333333, 0, 0.333333333, 0.333333333, 0, 0.333333333, 0.333333333, 0.333333333, 0.333333333, 0.333333333]
+index = 0
+index1 = 0
+index2 = 0
+index3 = 0
+index4 = 0
+index5 = 0
+index6 = 0
+pans = [-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1]
+#these are samples that I've downloaded and will use at some point in my song
+choruselec = "C:/Users/trina_umana/Desktop/marina/chrousinstrum.wav"
+hug = "C:/Users/trina_umana/Desktop/marina/marinabeg.wav"
+statue = "C:/Users/trina_umana/Desktop/marina/marina1.wav"
+undressed = "C:/Users/trina_umana/Desktop/marina/marina_1_5.wav"
+prechor = "C:/Users/trina_umana/Desktop/marina/marinapre.wav"
+chorvocs = "C:/Users/trina_umana/Desktop/marina/marinachor.wav"
+chorvocs2 = "C:/Users/trina_umana/Desktop/marina/chorpttwo.wav"
+backvocs = "C:/Users/trina_umana/Desktop/marina/back_voc.wav"
+marina = [hug, statue, undressed, prechor, chorvocs, chorvocs2]
+msleeps = [16.7, 7, 8, 15.6, 15.3, 40]
+
+#this is a function, the code inside is given a name which when you call
+define :beginning do
+  18.times do #the code inside is only done 18 times
+    play fnotes[index] #this is saying to play the array called fnotes, starting at the value assigned to index
+    sleep fsleeps[index1]
+    index = index + 1 #this is saying that the value for index will increase by one throughout every loop
+    index1 = index1 + 1
+  end
+  index = 0 #after the 18 loops are done, the value of index resets
+  index1 = 0
+end
+
+define :pre do
+  20.times do
+    sleep 12
+    play snotes[index2]
+    sleep ssleeps[index3]
+    index2 = index2 + 1
+    index3 = index3 + 1
+  end
+  index2 = 0
+  index3 = 0
+end
+
+define :randopre do
+  loop do
+    sample backvocs, amp: 0.3, pan: pans[index6] #pan allows the sound to be played on either the left ear, right ear, or both
+    sleep rrand(15, 20) #this is saying that the sample will sleep at any random time between 15 and 20
+  end
+end
+
+define :vocals do
+  6.times do
+    sample marina[index4], amp: 10 #this is playing the samples within the array, marina
+    sleep msleeps[index5]
+    index4 = index4 + 1
+    index5 = index5 + 1
+  end
+  index4 = 0
+  index5 = 0
+end
+
+live_loop :beg do
+  beginning
+end
+=begin
+live_loop :prechormus do
+  sync :beg
+  pre
+=end
+=begin
+live_loop :random do
+  sync :beg
+  randopre
+=end
+=begin
+live_loop :chorelec do
+  sync :beg
+  sleep 47.2
+  sample choruselec, amp: 10
+  sleep 40
+end
+
+live_loop :vocs do
+  sync :beg
+  vocals
+  sleep 40
+=end
