@@ -1,0 +1,8 @@
+#sample from FEAR & LOATHING by MARINA & THE DIAMONDS
+use_bpm 72
+b = 0.5
+ending = "C:/Users/trina_umana/Desktop/marina/ending.wav"
+
+1.times do
+  sample ending
+end
