@@ -1,0 +1,21 @@
+#samples from TEEN IDLE and POWER & CNONTROL by MARINA & THE DIAMONDS
+use_bpm 72
+
+fmid = "C:/Users/trina_umana/Desktop/marina/middle2.wav"
+smid = "C:/Users/trina_umana/Desktop/marina/middle3.wav"
+
+live_loop :intermission1 do
+  sleep 1
+  sample fmid, attack: 4, sustain: 16, decay: 5
+  sleep 25
+end
+=begin
+live_loop :int2 do
+  sleep 1
+  sample smid
+  sleep 7
+end
+
+live_loop :intermission1 do
+  stop
+=end
