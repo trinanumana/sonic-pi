@@ -26,7 +26,7 @@ backvocs = "C:/Users/trina_umana/Desktop/marina/back_voc.wav"
 marina = [hug, statue, undressed, prechor, chorvocs, chorvocs2]
 msleeps = [16.7, 7, 8, 15.6, 15.3, 40]
 
-#this is a function, the code inside is given a name which when you call
+#this is a function, the code inside is given a name which when you call the code will be played
 define :beginning do
   18.times do #the code inside is only done 18 times
     play fnotes[index] #this is saying to play the array called fnotes, starting at the value assigned to index
