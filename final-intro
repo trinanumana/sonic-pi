@@ -1,7 +1,7 @@
 #sample from HOMEWRECKER by MARINA & THE DIAMONDS
 use_bpm 72
 #these are variables
-b = 0
+b = 0.5
 c = 1
 #this is a sample
 intro = "C:/Users/trina_umana/Desktop/marina/intrro.wav"
