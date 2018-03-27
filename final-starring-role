@@ -15,6 +15,8 @@ index5 = 0
 index6 = 0
 pans = [-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1]
 #these are samples that I've downloaded and will use at some point in my song
+statmus = "C:/Users/trina_umana/Desktop/marina/statuemus.wav"
+instrum = "C:/Users/trina_umana/Desktop/marina/instrum.wav"
 choruselec = "C:/Users/trina_umana/Desktop/marina/chrousinstrum.wav"
 hug = "C:/Users/trina_umana/Desktop/marina/marinabeg.wav"
 statue = "C:/Users/trina_umana/Desktop/marina/marina1.wav"
@@ -26,7 +28,7 @@ backvocs = "C:/Users/trina_umana/Desktop/marina/back_voc.wav"
 marina = [hug, statue, undressed, prechor, chorvocs, chorvocs2]
 msleeps = [16.7, 7, 8, 15.6, 15.3, 40]
 
-#this is a function, the code inside is given a name which when you call the code will be played
+#this is a function, the code inside is given a name which when you call
 define :beginning do
   18.times do #the code inside is only done 18 times
     play fnotes[index] #this is saying to play the array called fnotes, starting at the value assigned to index
@@ -53,7 +55,7 @@ end
 define :randopre do
   loop do
     sample backvocs, amp: 0.3, pan: pans[index6] #pan allows the sound to be played on either the left ear, right ear, or both
-    sleep rrand(15, 20) #this is saying that the sample will sleep at any random time between 15 and 20
+    sleep rrand(3, 5) #this is saying that the sample will sleep at any random time between 15 and 20
   end
 end
 
@@ -67,30 +69,69 @@ define :vocals do
   index4 = 0
   index5 = 0
 end
+#starts the song off, plays the function "beginning" three times
+3.times do
+  beginning
+end
 
 live_loop :beg do
   beginning
 end
-=begin
+
 live_loop :prechormus do
   sync :beg
   pre
-=end
-=begin
+end
+
 live_loop :random do
   sync :beg
   randopre
-=end
-=begin
+end
+
+live_loop :versmus do
+  sync :beg
+  sleep 16.6
+  sample statmus, amp: 4
+  sleep 85
+end
+
+live_loop :prechor do
+  sync :beg
+  sleep 31.5
+  sample instrum, amp: 4
+  sleep 70
+end
+
 live_loop :chorelec do
   sync :beg
   sleep 47.2
-  sample choruselec, amp: 10
-  sleep 40
+  sample choruselec, amp: 4
+  sleep 54.4
 end
 
 live_loop :vocs do
   sync :beg
   vocals
-  sleep 40
+  sleep 2
+end
+
+=begin
+live_loop :beg do
+  stop
+end
+
+live_loop :prechormus do
+  stop
+end
+
+live_loop :random do
+  stop
+end
+
+live_loop :chorelec do
+  stop
+end
+
+live_loop :vocs do
+  stop
 =end
